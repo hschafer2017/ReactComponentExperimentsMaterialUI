@@ -109,55 +109,60 @@ class AboutCard extends React.Component {
 
 ReactDOM.render(<AboutCard />, document.getElementById('card'))
 
-function AppButton() {
+class DemoButton extends React.Component {
+    render () {
     return (
         <React.Fragment>
         <CssBaseline />
-      <Button variant="contained" color="secondary">
-        This is my button <i className="material-icons">
-        accessibility
-        </i>
-      </Button>
-      <Button variant="outlined" color="primary" size="small">
-      This is my other button<i className="material-icons">
-        done
-        </i>
-      </Button>
+            <Button variant="contained" color="secondary">
+                This is my button <i className="material-icons">
+                accessibility
+                </i>
+            </Button>
+            <Button variant="outlined" color="primary" size="small">
+            This is my other button<i className="material-icons">
+                done
+                </i>
+            </Button>
       </React.Fragment>
     );
   }
-
-ReactDOM.render(<AppButton />, document.getElementById('root'));
-
-function AppFeature() {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-        <Button variant="contained" color="primary">
-        App Feature Button
-          </Button>
-    </React.Fragment>
-  )
 }
-ReactDOM.render(<AppFeature />, document.getElementById('search'));
 
+ReactDOM.render(<DemoButton />, document.getElementById('root'));
 
-function AppForm() {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-          <TextField id="time" type="text" label='username' inputProps={inputProps} />
-          <TextField id="time" type="password" label='password' inputProps={inputProps} />
-          <Button variant="fab" color="secondary" size='regular'>
-          <i className="material-icons">
-        done
-        </i>
-          </Button>
-    </React.Fragment>
-  )
+class FeatureButton extends React.Component {
+    render () {
+        return (
+            <React.Fragment>
+            <CssBaseline />
+                <Button variant="contained" color="primary">
+                App Feature Button
+                </Button>
+            </React.Fragment>
+        );
+    }
 }
-ReactDOM.render(<AppForm />, document.getElementById('loginForm'));
+ReactDOM.render(<FeatureButton />, document.getElementById('search'));
 
 
-  
+class DemoLoginForm extends React.Component {
+    render () {
+        return (
+            <React.Fragment>
+            <CssBaseline />
+                <TextField id="time" type="text" label='username' inputProps={inputProps} />
+                <TextField id="time" type="password" label='password' inputProps={inputProps} />
+                <Button variant="fab" color="secondary" size='regular'>
+                    <i className="material-icons">
+                    done
+                    </i>
+                </Button>
+            </React.Fragment>
+        );
+    }
+}
+ReactDOM.render(<DemoLoginForm />, document.getElementById('loginForm'));
+
+
 serviceWorker.unregister();
