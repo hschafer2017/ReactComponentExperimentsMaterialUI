@@ -9,6 +9,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
 
 const inputProps = {
   step: 500,
@@ -32,31 +36,78 @@ const nav = {
       },
 }
 
+const cardstyles = {
+    card: {
+        minWidth: 300,
+        marginBottom: 50,
+      },
+      title: {
+        fontSize: 14,
+      },
+      pos: {
+        marginBottom: 20,
+      },
+      p: {
+          fontSize: 18,
+          lineHeight: 1.5,
+      }
+}
 
 class Nav extends React.Component {
   render() {
     return (
         <AppBar title="Let's Try Cool Styles!" style={nav} className={nav.root}>
-        <Toolbar>
-            <IconButton className={nav.menuButton} color="inherit" aria-label="Open drawer">
-                <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit" noWrap className={nav.grow}>
-                Try Cool Styles!
-            </Typography>
-            <Tabs>
-                <Tab label="Home" />
-                <Tab label="About" />
-                <Tab label="More" />
-                <Tab label="Contact" />
-            </Tabs>
+            <Toolbar>
+                <IconButton className={nav.menuButton} color="inherit" aria-label="Open drawer">
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" color="inherit" noWrap className={nav.grow}>
+                    Try Cool Styles!
+                </Typography>
+                <Tabs>
+                    <Tab label="Home" />
+                    <Tab label="About" />
+                    <Tab label="More" />
+                    <Tab label="Contact" />
+                </Tabs>
             </Toolbar>
-      </AppBar>
+        </AppBar>
     )
   }
 }
 
 ReactDOM.render(<Nav />, document.getElementById('nav'))
+
+class AboutCard extends React.Component {
+    render () {
+        return (
+        <Card className={cardstyles.card}>
+            <CardContent>
+                <Typography className={cardstyles.title} color="textSecondary" gutterBottom>
+                Home
+                </Typography>
+                <br />
+                <Typography variant="h5" component="h2">
+                Check out some cool styling components using Material UI for React.js!
+                </Typography>
+                <Typography className={cardstyles.pos} color="textSecondary">
+                Keep scrolling for more component examples! 
+                </Typography>
+                <br />
+                <Typography className={cardstyles.p}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Euismod nisi porta lorem mollis aliquam. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Et pharetra pharetra massa massa ultricies mi. Ornare arcu dui vivamus arcu felis bibendum ut. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Nisl pretium fusce id velit ut tortor. Quis commodo odio aenean sed adipiscing diam donec adipiscing. Tortor id aliquet lectus proin nibh. At lectus urna duis convallis. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Duis tristique sollicitudin nibh sit amet. Massa massa ultricies mi quis hendrerit dolor magna eget est. Risus feugiat in ante metus dictum at. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Ut eu sem integer vitae justo eget magna fermentum iaculis. Urna cursus eget nunc scelerisque viverra. Viverra suspendisse potenti nullam ac. 
+                <br />
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small">Take me to the components!</Button>
+            </CardActions>
+        </Card>
+        );
+    }
+}
+
+ReactDOM.render(<AboutCard />, document.getElementById('card'))
 
 function AppButton() {
     return (
@@ -109,9 +160,4 @@ ReactDOM.render(<AppForm />, document.getElementById('loginForm'));
 
 
   
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-// ReactDOM.render(<App />, document.querySelector('#app'));
