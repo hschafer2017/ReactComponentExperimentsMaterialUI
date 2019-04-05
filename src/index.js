@@ -13,8 +13,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import withStyles from "@material-ui/core/styles/withStyles";
-import withWidth from '@material-ui/core/withWidth';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -74,22 +72,6 @@ const photoStyles = {
     },
   };
 
-const styles = theme => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-      width: 500,
-      height: 450,
-    },
-  });
-
-
-
 class Nav extends React.Component {
   render() {
     return (
@@ -103,7 +85,7 @@ class Nav extends React.Component {
                 </Typography>
                 <Tabs>
                     <Tab label="Home" />
-                    <Tab label="About" />
+                    <Tab label="Photos" />
                     <Tab label="More" />
                     <Tab label="Contact" />
                 </Tabs>
@@ -125,7 +107,7 @@ class AboutCard extends React.Component {
                 </Typography>
                 <br />
                 <Typography variant="h5" component="h2">
-                Check out some cool styling components using Material UI for React.js!
+                Check out some cool styling components using the Material UI Framework for React.js!
                 </Typography>
                 <Typography className={cardstyles.pos} color="textSecondary">
                 Keep scrolling for more component examples! 
@@ -150,12 +132,12 @@ class PhotoGrid extends React.Component {
     render() {
         return (
             <div className={photoStyles.root}>
-                <GridList cellHeight={300} cellWidth={180} className={photoStyles.gridList} cols={3}>
+                <GridList cellHeight={400} className={photoStyles.gridList} cols={3}>
                     {tileData.map(tile => (
                     <GridListTile key={tile.img} cols={tile.cols}>
-                        <img src={ tile.img } />
+                        <img src={tile.img} style={tile.style} alt={tile.title}/>
                         <GridListTileBar
-                            title={tile.title }
+                            title={tile.title}
                         />
                     </GridListTile>
                     ))}
