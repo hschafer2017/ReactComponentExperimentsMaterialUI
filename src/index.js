@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {AppBar, Tabs, Tab, Typography, Toolbar} from '@material-ui/core'
 import './libraries/bootstrap.min.css';
 import './index.css';
@@ -12,6 +13,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import withStyles from "@material-ui/core/styles/withStyles";
+import withWidth from '@material-ui/core/withWidth';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import tileData from './tileData';
 
 
 const inputProps = {
@@ -52,6 +59,36 @@ const cardstyles = {
           lineHeight: 1.5,
       }
 }
+
+const photoStyles = {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: '#fafafa',
+    },
+    gridList: {
+      width: 500,
+      height: 450,
+    },
+  };
+
+const styles = theme => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: theme.palette.background.paper,
+    },
+    gridList: {
+      width: 500,
+      height: 450,
+    },
+  });
+
+
 
 class Nav extends React.Component {
   render() {
@@ -108,6 +145,28 @@ class AboutCard extends React.Component {
 }
 
 ReactDOM.render(<AboutCard />, document.getElementById('card'))
+
+class PhotoGrid extends React.Component {
+    render() {
+        return (
+            <div className={photoStyles.root}>
+                <GridList cellHeight={300} cellWidth={180} className={photoStyles.gridList} cols={3}>
+                    {tileData.map(tile => (
+                    <GridListTile key={tile.img} cols={tile.cols}>
+                        <img src={ tile.img } />
+                        <GridListTileBar
+                            title={tile.title }
+                        />
+                    </GridListTile>
+                    ))}
+                </GridList>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<PhotoGrid />, document.getElementById('photos'));
+
 
 class DemoButton extends React.Component {
     render () {

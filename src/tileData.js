@@ -30,3 +30,4 @@ const tileData = [
         cols: 2,
     },
     ];
+export default tileData
